@@ -15,6 +15,8 @@ function pickAWord () {
 
     // If there are still answers that have not been attempted yet, do the following:
     if (answersArray.length > 0) {
+        // Display message for new game.
+        console.log ("\n" + "New phrase:")
         // Pick a random number from 0 to the number of elements currently in the answers array.
         var rnd = Math.floor(Math.random() * answersArray.length);
         // Set a variable to the randomly selected value.
@@ -58,14 +60,17 @@ function takeAGuess () {
         // Error check the user's input for spaces or more than one character.
         if (theLetter === " ") {
             console.log ("Guessing a space does not make sense!");
+        } else if (theLetter.length === 0) {
+            console.log("Be sure to type in a letter.");
         } else if (theLetter.length > 1) {
-            console.log ("One letter at a time!");
+            console.log("One letter at a time!");
         } else {
             // Call function to set flags in letter constructor if there is a match.
             currentWord.guessLetter(theLetter);
             // Display message if all letters in the answer have been guessed.
             if (currentWord.allGuessed() === true) {
-                console.log("You guessed it!");
+                console.log("You guessed it!" + "\n");
+                console.log(thisAnswer);
                 keepGoing = false;
             } else {
                 // Display message if the user has made the maximum number of guesses.
@@ -94,4 +99,3 @@ console.log("Welcome!" + "\n");
 
 // Call the process to pick a new word and start the game.
 pickAWord();
-

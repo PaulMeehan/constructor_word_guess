@@ -1,17 +1,19 @@
-# ProjectTitle
+# Constructor Word Guess
 
 ### Programmer: Paul Meehan
 ### Date: 3/2/2019
 
 **Purpose:**
+
 This application is a Command Line Interface program that is similar to the classic game "Hangman".  The application randomly picks
-a word or phrase and displays an underscore character in place of each letter.  As the user guesses correct letters, the application will reveal those letters in their correct location.  The game continues until all of the letters of the phrase have been guessed or the user runs out of guesses.
+a word or phrase and displays an underscore character in place of each letter.  As the user guesses correct letters, the application will reveal those letters in their correct location.  The game continues until all of the letters of the phrase have been guessed or the user reaches the maximum number of guesses.
 
 A video demonstration of this application is available here:
 
-[place link here]
+https://drive.google.com/file/d/1XKtbnxh73OiOqtzV2rySQn5UszUPTVUJ/view
 
 **User instructions:**
+
 Once the game starts, the application will display the secret word or phrase with underscores in place of each letter.  Note that spaces within the phrase will be displayed automatically and do not need to be guessed.
 
 When prompted, type a letter of the alphabet and press Enter.  The game will tell you whether your guess matches one or more of the letters in the secret phase.  It will then diplay the phrase with the guessed letters in their correct locations.
