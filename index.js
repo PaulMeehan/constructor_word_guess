@@ -4,7 +4,7 @@ const word = require("./Words");
 const inquirer = require("inquirer");
 
 // Create an array of all of the possible answer words or phrases.
-var answersArray = ["THE BIG BANG THEORY", "THE GOLDBERGS", "SEINFELD", "MODERN FAMILY", "TWILIGHT ZONE"];
+var answersArray = ["THE BIG BANG THEORY", "THE GOLDBERGS", "SEINFELD", "MODERN FAMILY", "TWILIGHT ZONE", "THE OFFICE"];
 var currentWord;        // Variable for the current Word constructor.
 var maxGuesses = 0;     // Maximum number of guesses a user has to determine the answer.
 var currentGuess = 0;   // The current guess number.
