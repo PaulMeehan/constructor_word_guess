@@ -2,40 +2,50 @@ const word = require("./Words");
 const inquirer = require("inquirer");
 
 
-var testWord = new word("the+end");
-var maxGuesses = testWord.letters.length + 5;
-var currentGuess = 1;
-var keepGoing = true;
+var thisAnswer = "THE END";
+var currentWord = new word(thisAnswer);
+var maxGuesses = currentWord.letters.length + 5;
+var currentGuess = 0;
 
-while ((currentGuess < maxGuesses) && (keepGoing === true)) {
-    console.log(testWord.getWord());
+
+function takeAGuess () {
+    console.log(currentWord.getWord() + "\n");
+    currentGuess = currentGuess + 1;
     inquirer.prompt([
         {
             type: "input",
-            name: "myGuess",
-            message: "Guess a letter:"
+            message: "Guess a letter:",
+            name: "myGuess"
         }
     ]).then(function (results) {
-        testWord.guessLetter(results.myGuess);
-        console.log(testWord.getWord());
-        if (testWord.allGuessed() === true) {
-            console.log("You guessed it!");
-            keepGoing = false;
+        var theLetter = results.myGuess.toUpperCase();
+        debugger;
+        var keepGoing = true;
+        if (theLetter === " ") {
+            console.log ("Guessing a space does not make sense!");
+        } else if (theLetter.length > 1) {
+            console.log ("One letter at a time!");
+        } else {
+            currentWord.guessLetter(theLetter);
+            if (currentWord.allGuessed() === true) {
+                console.log("You guessed it!");
+                keepGoing = false;
+            } else {
+                if (currentGuess >= maxGuesses) {
+                    console.log("Sorry, you ran out of guesses!" + "\n");
+                    console.log("The correct solution was: " + thisAnswer);
+                    keepGoing = false;
+                } else {
+                    console.log((maxGuesses - currentGuess) + " guesses left." + "\n");
+                }
+            };
         };
+        if (keepGoing) {
+            takeAGuess();
+        }
     });
-    currentGuess = currentGuess + 1;
+};
 
-}
-
-// console.log(testWord.getWord() + " " + testWord.allGuessed());
-// testWord.guessLetter("t");
-// console.log(testWord.getWord() + " " + testWord.allGuessed());
-// testWord.guessLetter("h");
-// console.log(testWord.getWord() + " " + testWord.allGuessed());
-// testWord.guessLetter("e");
-// console.log(testWord.getWord() + " " + testWord.allGuessed());
-// testWord.guessLetter("n");
-// console.log(testWord.getWord() + " " + testWord.allGuessed());
-// testWord.guessLetter("d");
-// console.log(testWord.getWord() + " " + testWord.allGuessed());
+console.log("starting");
+takeAGuess();
 

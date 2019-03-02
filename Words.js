@@ -19,9 +19,19 @@ word.prototype.getWord = function() {
 };
 
 word.prototype.guessLetter = function(thisLetter) {
+    var letterFound = false;
     for (var i=0; i < this.letters.length; i++) {
-        this.letters[i].guess(thisLetter);
+        if (this.letters[i].guess(thisLetter)) {
+            letterFound = true;
+        };
     };
+    console.log("\n");
+    if (letterFound) {
+        console.log ("Correct!");
+    } else {
+        console.log("Nope.");
+    };
+    console.log("\n");
 };
 
 word.prototype.allGuessed = function() {

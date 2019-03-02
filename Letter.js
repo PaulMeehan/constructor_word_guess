@@ -4,7 +4,7 @@ const letter = function (letterIn) {
 };
 
 letter.prototype.check = function() {
-    if (this.val === "+") {
+    if (this.val === " ") {
         return " ";
     } else {
         if (this.guessed) {
@@ -17,8 +17,13 @@ letter.prototype.check = function() {
 
 
 letter.prototype.guess = function (letterIn) {
-    if ((letterIn === this.val) || (this.val === "+")) {
+    if ((letterIn === this.val) || (this.val === " ")) {
         this.guessed = true;
+    };
+    if (letterIn === this.val) {
+        return true;
+    } else {
+        return false;
     };
 };
 
